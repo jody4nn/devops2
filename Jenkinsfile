@@ -4,12 +4,12 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
   environment {
-    DOCKERHUB_CREDENTIALS = credentials('jdy4ann')
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
   }
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t  jdy4ann/jenkins-docker-hub:nginx-devops-v$BUILD_NUMBER '
+        sh 'docker build -t  jdy4ann/jenkins-docker-hub:nginx-devops-v$BUILD_NUMBER .'
       }
     }
     stage('Login') {
